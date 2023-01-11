@@ -18,9 +18,10 @@ Post or update messages on [Discord](discord.com/).
 
 ```yaml
       - name: Deploy on Discord
-        uses: snorrwe/discord-action@v1.0.0
+        uses: snorrwe/discord-action@v1.0.1
         with:
+          discord_message: new
           discord_token: ${{ secrets.DISCORD_BOT_TOKEN }}
           post_file: CHANGELOG.md
-          discord_channel: '12345678' # The quote marks here are required
+          discord_channel: '1062517242148958228' # N.B. The quote marks here are required
 ```
