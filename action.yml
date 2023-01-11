@@ -1,5 +1,5 @@
-name: 'Discord Message Updater'
-description: 'Update Discord messages'
+name: 'Discord Courier'
+description: 'Post and update Discord messages via your Discord Bot'
 inputs:
   discord_token:
     description: Discord Bot Token for Authentication
