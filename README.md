@@ -22,5 +22,5 @@ Post or update messages on [Discord](discord.com/).
         with:
           discord_token: ${{ secrets.DISCORD_BOT_TOKEN }}
           post_file: CHANGELOG.md
-          discord_channel: '' # The quote marks here are required
+          discord_channel: '12345678' # The quote marks here are required
 ```
