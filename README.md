@@ -15,3 +15,12 @@ Post or update messages on [Discord](discord.com/).
 | `POST_FILE` | `false` | "/etc/discord-post/post" | The contents of this file will be posted as the message |
 
 ## Usage
+
+```yaml
+      - name: Deploy on Discord
+        uses: snorrwe/discord-action@v1.0.0
+        with:
+          discord_token: ${{ secrets.DISCORD_BOT_TOKEN }}
+          post_file: CHANGELOG.md
+          discord_channel: '' # The quote marks here are required
+```
