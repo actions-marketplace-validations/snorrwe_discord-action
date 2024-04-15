@@ -41,7 +41,12 @@ client.once(discord.Events.ClientReady, async (c) => {
         const msg = await channel.messages.fetch(msgId);
         await msg.edit(body);
     } else {
-        await channel.send(body);
+        const maxSize = 2000;
+        const chunks = Math.ceil(body.length / maxSize);
+        for (let i = 0; i < chunks; ++i) {
+            const chunk = str.substr(i * maxSize, maxSize);
+            await channel.send(chunk);
+        }
     }
     console.log("done");
     process.exit(0);
