@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.6] - 2024-04-21
+
+### ⚙️ Miscellaneous Tasks
+
+- Update deps
+
+### 🚜 Refactor
+
+- Update used node version to 20
+
 ## [1.0.5] - 2024-04-15
 
 ### 🚀 Features
