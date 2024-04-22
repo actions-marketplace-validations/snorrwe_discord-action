@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.9] - 2024-04-22
+
+### ⚙️ Miscellaneous Tasks
+
+- Add logs
+
 ## [1.0.8] - 2024-04-22
 
 ### 🐛 Bug Fixes

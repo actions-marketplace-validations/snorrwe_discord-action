@@ -18,7 +18,7 @@ Post or update messages on [Discord](discord.com/).
 
 ```yaml
       - name: Deploy on Discord
-        uses: snorrwe/discord-action@v1.0.8
+        uses: snorrwe/discord-action@v1.0.9
         with:
           discord_message: new
           discord_token: ${{ secrets.DISCORD_BOT_TOKEN }}
