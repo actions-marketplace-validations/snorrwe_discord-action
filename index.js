@@ -41,7 +41,7 @@ client.once(Events.ClientReady, async (c) => {
         const msg = await channel.messages.fetch(msgId);
         await msg.edit(body);
     } else {
-        const maxSize = 2000;
+        const maxSize = 1000;
         const chunks = Math.ceil(body.length / maxSize);
         for (let i = 0; i < chunks; ++i) {
             const chunk = str.substr(i * maxSize, maxSize);
