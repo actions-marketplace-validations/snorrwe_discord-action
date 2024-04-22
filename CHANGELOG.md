@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.8] - 2024-04-22
+
+### 🐛 Bug Fixes
+
+- Reduce chunking size to 1000
+
 ## [1.0.6] - 2024-04-21
 
 ### ⚙️ Miscellaneous Tasks
