@@ -36,18 +36,18 @@ client.once(Events.ClientReady, async (c) => {
     const data = readFileSync(postFilePath);
     const messagePayload = data.toString();
 
-    let body = { content: escapeMarkdown(messagePayload) };
+    const content = escapeMarkdown(messagePayload);
     if (msgId && msgId != "new") {
         const msg = await channel.messages.fetch(msgId);
-        await msg.edit(body);
+        await msg.edit({ content });
     } else {
-        const maxSize = 1000;
-        const chunks = Math.ceil(body.length / maxSize);
+        const maxSize = 2000;
+        const chunks = Math.ceil(content.length / maxSize);
         console.log("Splitting messages into ", chunks, " chunks");
         for (let i = 0; i < chunks; ++i) {
             console.log("Posting chunk ", i);
-            const chunk = str.substr(i * maxSize, maxSize);
-            await channel.send(chunk);
+            const chunk = content.substr(i * maxSize, maxSize);
+            await channel.send({ content: chunk });
         }
     }
     console.log("done");
