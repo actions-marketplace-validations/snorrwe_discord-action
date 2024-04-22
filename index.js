@@ -43,7 +43,9 @@ client.once(Events.ClientReady, async (c) => {
     } else {
         const maxSize = 1000;
         const chunks = Math.ceil(body.length / maxSize);
+        console.log("Splitting messages into ", chunks, " chunks");
         for (let i = 0; i < chunks; ++i) {
+            console.log("Posting chunk ", i);
             const chunk = str.substr(i * maxSize, maxSize);
             await channel.send(chunk);
         }
