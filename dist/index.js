@@ -111651,6 +111651,18 @@ module.exports = JSON.parse('{"name":"discord.js","version":"14.12.1","descripti
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__nccwpck_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__nccwpck_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/create fake namespace object */
 /******/ 	(() => {
 /******/ 		var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
@@ -111715,11 +111727,19 @@ module.exports = JSON.parse('{"name":"discord.js","version":"14.12.1","descripti
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
-const discord = __nccwpck_require__(46977);
-const ghCore = __nccwpck_require__(44508);
-const fs = __nccwpck_require__(57147);
+"use strict";
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony import */ var discord_js__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(46977);
+/* harmony import */ var discord_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(discord_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(44508);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(57147);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
 
 function getActionEnv({ key, defaultValue = null, required = false }) {
     if (process.env[key]) {
@@ -111730,16 +111750,16 @@ function getActionEnv({ key, defaultValue = null, required = false }) {
     }
     if (required) {
         const msg = `key=(${key}) not found`;
-        ghCore.setFailed(msg);
+        (0,_actions_core__WEBPACK_IMPORTED_MODULE_1__.setFailed)(msg);
         process.exit(1);
     }
     return defaultValue;
 }
 
-const client = new discord.Client({
-    intents: [discord.GatewayIntentBits.Guilds],
+const client = new discord_js__WEBPACK_IMPORTED_MODULE_0__.Client({
+    intents: [discord_js__WEBPACK_IMPORTED_MODULE_0__.GatewayIntentBits.Guilds],
 });
-client.once(discord.Events.ClientReady, async (c) => {
+client.once(discord_js__WEBPACK_IMPORTED_MODULE_0__.Events.ClientReady, async (c) => {
     const channel = await c.channels.fetch(
         getActionEnv({ key: "DISCORD_CHANNEL", required: true }),
     );
@@ -111752,10 +111772,10 @@ client.once(discord.Events.ClientReady, async (c) => {
         defaultValue: "/etc/discord-post/post",
     });
 
-    const data = fs.readFileSync(postFilePath);
+    const data = (0,fs__WEBPACK_IMPORTED_MODULE_2__.readFileSync)(postFilePath);
     const messagePayload = data.toString();
 
-    let body = { content: discord.escapeMarkdown(messagePayload) };
+    let body = { content: (0,discord_js__WEBPACK_IMPORTED_MODULE_0__.escapeMarkdown)(messagePayload) };
     if (msgId && msgId != "new") {
         const msg = await channel.messages.fetch(msgId);
         await msg.edit(body);

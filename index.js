@@ -1,6 +1,6 @@
-const discord = require("discord.js");
-const ghCore = require("@actions/core");
-const fs = require("fs");
+import { Client, GatewayIntentBits, Events, escapeMarkdown } from "discord.js";
+import { setFailed } from "@actions/core";
+import { readFileSync } from "fs";
 
 function getActionEnv({ key, defaultValue = null, required = false }) {
     if (process.env[key]) {
@@ -11,16 +11,16 @@ function getActionEnv({ key, defaultValue = null, required = false }) {
     }
     if (required) {
         const msg = `key=(${key}) not found`;
-        ghCore.setFailed(msg);
+        setFailed(msg);
         process.exit(1);
     }
     return defaultValue;
 }
 
-const client = new discord.Client({
-    intents: [discord.GatewayIntentBits.Guilds],
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds],
 });
-client.once(discord.Events.ClientReady, async (c) => {
+client.once(Events.ClientReady, async (c) => {
     const channel = await c.channels.fetch(
         getActionEnv({ key: "DISCORD_CHANNEL", required: true }),
     );
@@ -33,10 +33,10 @@ client.once(discord.Events.ClientReady, async (c) => {
         defaultValue: "/etc/discord-post/post",
     });
 
-    const data = fs.readFileSync(postFilePath);
+    const data = readFileSync(postFilePath);
     const messagePayload = data.toString();
 
-    let body = { content: discord.escapeMarkdown(messagePayload) };
+    let body = { content: escapeMarkdown(messagePayload) };
     if (msgId && msgId != "new") {
         const msg = await channel.messages.fetch(msgId);
         await msg.edit(body);
