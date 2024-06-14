@@ -2,7 +2,7 @@ Port of https://github.com/hreeder/discord-post-updater
 
 # Discord Message Updater
 
-Post or update messages on [Discord](discord.com/). 
+Post or update messages on [Discord](https://discord.com/).
 
 
 ## Configuration
